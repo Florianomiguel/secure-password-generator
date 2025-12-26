@@ -1,4 +1,4 @@
-import random_password
+import Password_generator.random_password as random_password
 
 try:
     option = int(input('Do you want to create a new password [1] or check your current one [2]?: '))
