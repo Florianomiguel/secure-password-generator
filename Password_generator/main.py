@@ -1,18 +1,39 @@
-import Password_generator.random_password as random_password
+import random_password
+from colorama import Fore, Style, init
 
-try:
-    option = int(input('Do you want to create a new password [1] or check your current one [2]?: '))
+init(autoreset=True)
+
+while True:
+    print(f"\n{'-'*30}")
+    print(f"{Fore.MAGENTA}{Style.BRIGHT}PASSWORD MANAGER MENU")
+    print(f"{'-'*30}")
     
-    print('Reminder: Passwords with fewer than 8 characters are rarely considered strong.')
-    
-    if option == 1:
-        length = int(input('Enter the length (number of characters) you want for your password: '))
-        random_password.password(length)
-    elif option == 2:
-        user_password = input('Enter your password: ').strip()
-        random_password.try_level(user_password)
-    else:
-        print('Invalid value, please enter only 1 or 2.')
+    try:
         
-except ValueError:
-    print('ERROR! Please enter integers only.')
+        prompt = (f"Do you want to:\n"
+                  f"{Fore.YELLOW}[1]{Fore.RESET} Create a new password\n"
+                  f"{Fore.YELLOW}[2]{Fore.RESET} Check current password\n"
+                  f"{Fore.RED}[0]{Fore.RESET} Exit\n"
+                  f"{Fore.CYAN}Choose an option: ")
+        
+        option = int(input(prompt))
+
+        if option == 1:
+            print(f"\n{Fore.YELLOW}Reminder: Passwords with fewer than 8 characters are rarely considered strong.")
+            length_prompt = f"{Fore.GREEN}Enter the length you want: "
+            length = int(input(length_prompt))
+            random_password.generate_password(length)
+            
+        elif option == 2:
+            pass_prompt = f"{Fore.GREEN}Enter your password to check: "
+            user_password = input(pass_prompt).strip()
+            random_password.try_level(user_password)
+            
+        elif option == 0:
+            print(f"\n{Fore.LIGHTBLACK_EX}Exiting... Goodbye!")
+            break  
+        else:
+            print(f"{Fore.RED}Invalid choice! Please enter 0, 1, or 2.")
+            
+    except ValueError:
+        print(f"{Fore.RED}{Style.BRIGHT}ERROR! Please enter numbers only.")
