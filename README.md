@@ -18,6 +18,7 @@ It was developed to practice **modularization**, **external API integration**, a
 * **`zxcvbn` Library:** For realistic password strength estimation.
 * **`secrets` Module:** For generating tokens and secure passwords.
 * **`string` Module:** To handle ASCII characters, digits, and punctuation.
+* **`string` Provides cross-platform support for colored terminal text and formatting.
 
 ## 📦 Installation
 
